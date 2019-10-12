@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+
+  width: 100%;
+  height: 100%;
 }
 
 .App-logo {
@@ -19,4 +22,50 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+ul {
+	font-size: 10px;
+}
+
+.GreyedOut td {
+	position: relative;
+}
+.GreyedOut td:after {
+	content: "";
+	color: grey;
+	background-color: #222222B0;
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+
+	z-index: 1;
+}
+
+.PlayerTable {
+	border-collapse: collapse;
+	font-size: 2vmin;
+}
+.PlayerTable table, th, td {
+	border-bottom: 1px solid grey;
+}
+.PlayerTable td, th {
+	padding: 5px;
+}
+
+.PlayerTable thead tr {
+	background-color: #303070;
+}
+
+.PlayerTable tbody tr:nth-child(even) {
+	background-color: #303050;
+}
+.PlayerTable tbody tr:hover {
+	background-color: #353555;
+}
+.PlayerTable tbody tr {
+	transition: background-color .4s ease;
 }
