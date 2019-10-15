@@ -1,0 +1,14 @@
+
+
+.LZRFrame {
+	border: solid grey 2px;
+	border-radius: 1vmin;
+
+	--box-shadow-color: "transparent";
+
+	box-shadow: 0vmin 0vmin 0.8vmin 0vmin var(--box-shadow-color),
+					inset 0vmin 0vmin 0.8vmin 0vmin var(--box-shadow-color),
+					0.6vmin 0.6vmin 1vmin 0vmin #111111;
+
+	margin: 1vmin;
+}
