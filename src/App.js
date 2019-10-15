@@ -8,6 +8,8 @@ import GenericBar from './GenericBar.js'
 
 import {SmallPlayerWidget, PlayerList} from './PlayerWidgets.js'
 
+import GameControl from './GameControl.js'
+
 var gameConn = ActiveConnection;
 
 function PlayerTableRow(player) {
@@ -74,12 +76,10 @@ class App extends React.Component {
 
 				<header className="App-header">
 				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-				Edit <code>src/App.js</code> and save to reload.
-				<br />
-				Team Value:
-					<PlayerList players={playerList} listName={"Connected Players"}/>
-				</p>
+
+				<GameControl />
+
+				<PlayerList players={playerList} listName={"Connected Players"}/>
 				<table className="PlayerTable">
 					<thead>
 						<tr>

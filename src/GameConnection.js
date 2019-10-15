@@ -4,7 +4,7 @@ import mqtt from 'mqtt';
 
 class GameConnection {
 	constructor() {
-		this.mClient = mqtt.connect('mqtt://192.168.6.27');
+		this.mClient = mqtt.connect('mqtt://192.168.250.1');
 
 		this.mClient.on('connect', ()=> {
 			this.mClient.subscribe('Lasertag/#');
@@ -153,6 +153,8 @@ class GameConnection {
 				nGameData.timer = parseFloat(data.toString());
 			break;
 		}
+
+		this.game = nGameData;
 
 		this.toUpdateComponents.forEach(component => {
 			if(component.onGameUpdate)

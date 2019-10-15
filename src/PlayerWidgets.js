@@ -2,9 +2,10 @@
 import React from 'react'
 import './PlayerWidget.css'
 
-import Color from 'color'
-
+import LZRFrame from './LZRFrame.js'
 import GenericBar from './GenericBar.js'
+
+import Color from 'color'
 
 import ActiveConnection from './GameConnection.js'
 
@@ -18,23 +19,17 @@ function SmallPlayerWidget(props) {
 		overlayOn = true;
 	}
 
-	let border_color = props.border_color || ActiveConnection.get_player_color(props.player);
-	let shadow_color = Color(border_color).lighten(0.1);
+	let border_color = ActiveConnection.get_player_color(props.player);
+	let noGlow = !props.player.connected;
 
-	if(border_color === "grey" || !props.player.connected) {
-		shadow_color = "transparent";
+	if(noGlow) {
 		border_color = Color(border_color).darken(0.3);
 	}
 
 	let img_source = props.player.icon;
 	img_source = img_source || "https://icon-library.net/images/generic-person-icon/generic-person-icon-11.jpg";
 
-	let combStyle = Object.assign(props.style || {},
-			{	"border-color": border_color,
-				"--box-shadow-color": shadow_color
-			});
-
-	return <div className="PlayerWidgetContainer" style={combStyle}>
+	return <LZRFrame className="PlayerWidgetContainer">
 		<div className="PlayerWidgetGrid">
 			<div className="PlayerWidgetOverlay" style={{opacity: overlayOn ? 1 : 0}}>
 			</div>
@@ -53,7 +48,7 @@ function SmallPlayerWidget(props) {
 			<GenericBar fillColor="cyan" fillPercent={props.player.life} />
 		</div>
 		<div className="PlayerWidgetDead" style={{opacity: props.player.dead ? 0.7 : 0}} />
-	</div>
+	</LZRFrame>
 }
 
 function PlayerList(props) {
@@ -65,11 +60,6 @@ function PlayerList(props) {
 
 	var listHeight = playerHeight * playerCount;
 
-	let combStyle = Object.assign(props.style || {},
-			{	"border-color": border_color,
-				"--box-shadow-color": "transparent",
-			});
-
 	let orderedPlayerList = [...props.players];
 	orderedPlayerList.sort((pa, pb) => {
 		return (pa.deviceID > pb.deviceID) ? -1 : 1;
@@ -80,7 +70,7 @@ function PlayerList(props) {
 		return <li key={player.deviceID} style={{top: `${playerPos*playerHeight + 2}vmin`}}> <SmallPlayerWidget key={player.deviceID} player={player}/> </li>
 	});
 
-	return <div className="PlayerWidgetContainer" style={combStyle}>
+	return <LZRFrame className="PlayerList">
 		<p>
 			{props.listName}
 		</p>
@@ -90,7 +80,7 @@ function PlayerList(props) {
 			{playerList}
 		</ul>
 
-	</div>
+	</LZRFrame>
 }
 
 export {SmallPlayerWidget, PlayerList};

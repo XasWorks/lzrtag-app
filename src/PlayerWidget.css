@@ -3,13 +3,6 @@
 	display: block;
 	position: relative;
 
-	border: solid grey 2px;
-	border-radius: 1vmin;
-
-	box-shadow: 0.6vmin 0.6vmin 1vmin 0vmin #111111,
-					0vmin 0vmin 0.8vmin 0vmin var(--box-shadow-color),
-					inset 0vmin 0vmin 0.8vmin 0vmin var(--box-shadow-color);
-
 	overflow: hidden;
 
 	font-size: 3vmin;
@@ -102,8 +95,11 @@
 	transition: opacity 0.6s ease-in-out;
 }
 
+.PlayerList {
+	min-width: 55vmin;
+}
 
-.PlayerWidgetContainer ul {
+.PlayerList ul {
 	display: block;
 	position: relative;
 
@@ -118,7 +114,7 @@
 	overflow-x: hidden;
 	overflow-y: auto;
 }
-.PlayerWidgetContainer ul li {
+.PlayerList ul li {
 	margin-bottom: 2vmin;
 
 	position: absolute;
